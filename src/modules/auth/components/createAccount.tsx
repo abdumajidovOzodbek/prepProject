@@ -42,7 +42,7 @@ function MyComponent() {
     }
     const verify = () => {
         if (telNumb) {
-            navigate('/verify')
+            navigate('/auth/verify')
         }
     }
     return (

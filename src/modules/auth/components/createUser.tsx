@@ -35,14 +35,18 @@ export interface FormProps {
 
 
 function CreateUser() {
-    const [telNumb, setTelNumb] = React.useState('')
+    const [surName, setSurName] = React.useState('')
+    const [firstname, setFirstName] = React.useState('')
+    const [region, setRegion] = React.useState('')
     const navigate = useNavigate()
     const onSubmit = () => {
-        localStorage.setItem('number', telNumb)
+        localStorage.setItem('surname', surName)
+        localStorage.setItem('firstname', firstname)
+        localStorage.setItem('region', region)
     }
     const verify = () => {
-        if (telNumb) {
-            navigate('/verify')
+        if (surName) {
+            navigate('/managment')
         }
     }
     return (
@@ -54,25 +58,41 @@ function CreateUser() {
                 ]}
             />
             <h2 className="mt-60 text-3xl w-[505px] font-bold leading-10 text-center text-teal-950 max-md:mt-10 max-md:max-w-full">
-            Пожалуйста, заполните поля с вашими данными
+                Пожалуйста, заполните поля с вашими данными
             </h2>
             <div
                 className="flex flex-col mt-8 font-semibold max-md:mt-10 max-md:max-w-full"
                 onSubmit={onSubmit}
             >
                 <label htmlFor="phoneInput" className="sr-only">
-                    Номер телефона*
+                    Фамилия*
                 </label>
                 <input
-                    onChange={e => setTelNumb(e.target.value)}
+                    onChange={e => setSurName(e.target.value)}
                     className="justify-center items-start px-6 py-6 text-lg leading-7 bg-white w-[456px] h-[61px] rounded-lg text-slate-500 max-md:px-5 max-md:mt-10 max-md:max-w-full"
-                    type="tel"
+                    type="text"
                     id="phoneInput"
-                    placeholder="Номер телефона*"
-                    aria-label="Номер телефона*"
+                    placeholder="Фамилия*"
+                    aria-label="Фамилия*"
                 />
+                <input
+                    onChange={e => setFirstName(e.target.value)}
+                    className="justify-center items-start mt-7 px-6 py-6 text-lg leading-7 bg-white w-[456px] h-[61px] rounded-lg text-slate-500 max-md:px-5 max-md:mt-10 max-md:max-w-full"
+                    type="text"
+                    id="phoneInput"
+                    placeholder="Имя*"
+                    aria-label="Имя*"
+                />
+                <select onChange={e => setRegion(e.target.value)} className="justify-center items-start mt-7 px-5 py-4 text-lg leading-7 bg-white w-[456px] h-[61px] rounded-lg text-slate-400 max-md:px-5 max-md:mt-10 max-md:max-w-full"
+                >
+                    <option disabled >Регион</option>
+                    <option value="tashkent">Tashkent</option>
+                    <option value="samarqand">Samarqand</option>
+                    <option value="buxoro">Buxoro</option>
+                    <option value="andijon">Andijon</option>
+                </select>
                 <button
-                    onClick={()=>{
+                    onClick={() => {
                         onSubmit()
                         verify()
                     }}
