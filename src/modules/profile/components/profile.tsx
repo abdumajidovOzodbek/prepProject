@@ -1,31 +1,6 @@
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
-
-type ProfileImageUploadProps = {
-    onClick: () => void;
-};
-
-const ProfileImageUpload: React.FC<ProfileImageUploadProps> = ({ onClick }) => {
-    return (
-        <div className="flex gap-5 justify-between self-start mt-16 max-md:mt-10">
-            <div
-                className="justify-center w-[100px] h-[100px] px-6 py-7 text-4xl text-indigo-600 whitespace-nowrap rounded-full border border-indigo-600 border-dashed stroke-[1px] max-md:px-5"
-                onClick={onClick}
-            >
-                AA
-            </div>
-            <div className="flex flex-col px-5 my-auto">
-                <h2 className="text-lg font-semibold leading-7 text-indigo-600">
-                    Загрузить фото профиля
-                </h2>
-                <p className="mt-3.5 text-sm leading-5 text-gray-400">
-                    Вы можете использовать форматы: <br /> .jpeg, .jpg, .png, .svg
-                </p>
-            </div>
-        </div>
-    );
-};
-
+import { ProfileImageUpload } from "./additional.components";
 
 
 const Profile: React.FC = () => {
@@ -38,10 +13,10 @@ const Profile: React.FC = () => {
         localStorage.setItem('firstname', firstname)
         localStorage.setItem('region', region)
         alert('succesfully changed')
-        navigate('/managment')
+        navigate('/management')
     }
     return (
-        <div className="flex items-center justify-center min-h-screen mt-10">
+        <div className="flex items-center justify-center min-h-screen mt-[30px] ">
             <main className="flex flex-col max-w-[552px] w-full px-4">
                 <nav className="flex gap-2 self-start text-sm leading-4">
                     <p className="text-slate-800">Главная</p>
